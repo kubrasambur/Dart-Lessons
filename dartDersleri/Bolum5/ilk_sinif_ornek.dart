@@ -13,10 +13,14 @@
 
 void main(List<String> args) {
   int sayi = 5;
+  var sayi2 = 10;
+
   Ogrenci kubra = Ogrenci();
   kubra.ogrAd = "Kubra Sambur";
   kubra.ogrNo = 123;
   kubra.aktifMi = true;
+
+  var kemal = Ogrenci();
 }
 
 class Ogrenci {
