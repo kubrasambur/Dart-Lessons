@@ -6,7 +6,42 @@ void main(List<String> args) {
   var ali = Ogrenci(7, "ali", 4);
 
   List<Person> tumOgrenciler = [emre, hasan, ayse, yunus, ali];
+  tumOgrenciler.add(yunus);
+  tumOgrenciler.addAll({emre});
+  //ya da
+  tumOgrenciler.addAll([ayse, ali]);
 
+  print(tumOgrenciler);
+
+  tumOgrenciler.sort((ogr1, ogr2) {
+    if (ogr1.id < ogr2.id) {
+      return -1;
+    } else if (ogr1.id > ogr2.id) {
+      return 1;
+    } else
+      return 0;
+  });
+
+  //listeyi dolaşır ve id si 3 ten büyük eleman varsa true yoksa false döndürür.
+  bool sonuc = tumOgrenciler.any((Person element) => element.id > 3);
+  print(sonuc);
+
+  var mapList = tumOgrenciler.map((Person e) => "${e.isim}").toList();
+
+  print(mapList);
+
+  Map<int, Person> yeniMap = tumOgrenciler.asMap();
+  print(yeniMap[0]!.isim);
+
+  print(tumOgrenciler.contains(ali));
+
+  bool sonucEvery = tumOgrenciler.every((element) => element.isim.length > 0);
+
+  print(sonucEvery);
+
+  var bulunan = tumOgrenciler.firstWhere((element) => element.id == 1);
+  print(bulunan);
+/*
   var liste1 = List<Ogrenci>.filled(5, Ogrenci(0, "", 0));
 
   var listeFrom = List<Person>.from(tumOgrenciler);
@@ -23,6 +58,7 @@ void main(List<String> args) {
   //degistirilemezListe.add(5); --> unmodifiable olduğu için eleman eklenemez
 
   print(degistirilemezListe.reversed);
+  */
 }
 
 class Person {
@@ -44,6 +80,6 @@ class Ogrenci extends Person {
 
   @override
   String toString() {
-    return "id:$id ve isim:$isim ve alinan ders sayısı:$alinanDersSayisi";
+    return "id:$id ve isim:$isim ve alinan ders sayısı:$alinanDersSayisi\n";
   }
 }
